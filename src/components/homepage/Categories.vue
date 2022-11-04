@@ -1,7 +1,7 @@
 <script setup>
     import { ref } from 'vue'
 
-    import CategoriesCard from '../CategoriesCard.vue';
+    import CategoriesCard from '../CategoryCard.vue';
 
     const categories = ref([
         { id: 1, title: 'Mobile UI Kit', count: 127, image: 'categories-1.jpg' },
