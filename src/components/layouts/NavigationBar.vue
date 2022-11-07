@@ -3,6 +3,7 @@
 import NavigationLink from './NavigationLink.vue'
 import Logo from './Logo.vue'
 import UserInfo from './UserInfo.vue'
+// import AuthButton from './AuthButton.vue'
 
 </script>
 

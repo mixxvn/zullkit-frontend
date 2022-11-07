@@ -14,7 +14,7 @@ const newItems = ([
     <div class="container px-4 mx-auto my-16 md:px-12">
       <h2 class="mb-4 text-xl font-medium md:mb-0 md:text-lg">New Items</h2>
       <div class="flex flex-wrap -mx-1 lg:-mx-4">
-        <NewItemCard v-for="newItem in newItems" :id="newItem.id" :title="newItem.title" :description="newItem.category" :image="newItem.image" />
+        <NewItemCard v-for="newItem in newItems" :key="newItem.id" :id="newItem.id" :title="newItem.title" :description="newItem.category" :image="newItem.image" />
         <!-- <div class="w-full px-1 my-1 md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
           <div class="overflow-hidden border border-gray-200 rounded-xl">
             <a href="details.html">
