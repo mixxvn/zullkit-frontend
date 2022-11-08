@@ -15,15 +15,15 @@ defineProps({
         <div class="overflow-hidden border border-gray-200 rounded-xl">
             <RouterLink :to="'/product/' + id">
                 <div class="m-4 overflow-hidden rounded-xl">
-                    <img alt="Placeholder" class="block w-full h-auto" :src="'/src/assets/img/' + image" />
+                    <img alt="Placeholder" class="block w-full h-auto" :src="image" />
                 </div>
             </RouterLink>
 
             <header class="px-4 mb-4 leading-tight">
                 <h1 class="text-lg">
-                    <a class="font-semibold text-black no-underline hover:underline" href="#">
+                    <RouterLink class="font-semibold text-black no-underline hover:underline" :to="'/product/' + id ">
                         {{ title }}
-                    </a>
+                    </RouterLink>
                 </h1>
                 <span class="block text-sm font-light text-gray-500 no-underline">
                     {{ description }}

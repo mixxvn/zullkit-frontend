@@ -1,28 +1,42 @@
 <script setup>
 
-import { ref } from 'vue'
+import axios from 'axios';
+import { ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router';
 
-const mainImage = ref("gallery-1.png")
-const imageList = ref([
-    { id: 1, image: 'gallery-2.png' },
-    { id: 2, image: 'gallery-3.png' },
-    { id: 3, image: 'gallery-4.png' },
-    { id: 4, image: 'gallery-5.png' }
-])
+const mainImage = ref({});
+const imageList = ref([]);
+const router = useRoute();
+
+async function getProduct(){
+    try {
+        const response = await axios.get('http://zullkit-backend.buildwithangga.id/api/products?id=' + router.params.id);
+        imageList.value = response.data.data.galleries;
+        mainImage.value = response.data.data.galleries[0].url;
+        // console.log(mainImage)
+        // console.log(response.data.data.galleries);
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 function changeMainImage (image){
     this.mainImage = image
 }
 
+onMounted (() => {
+    getProduct();
+})
+
 </script>
 
 <template>
     <section id="gallery">
-        <img :src="'/src/assets/img/' + mainImage" alt="" class="w-full mt-6 rounded-2xl">
+        <img :src="mainImage" alt="" class="w-full mt-6 rounded-2xl">
         <div class="grid grid-cols-4 gap-4 mt-4">
             <template v-for="image in imageList" :key="image.id">
-                <div @click="changeMainImage(image.image)" class="overflow-hidden cursor-pointer rounded-2xl" :class="{ 'ring-2 ring-indigo-500' : mainImage == image.image}">
-                    <img :src="'/src/assets/img/' + image.image " class="w-full" alt="">
+                <div @click="changeMainImage(image.url)" class="overflow-hidden cursor-pointer rounded-2xl" :class="{ 'ring-2 ring-indigo-500' : mainImage == image.url}">
+                    <img :src="image.url " class="w-full" alt="">
                 </div>
             </template>
             <!-- <div class="overflow-hidden cursor-pointer ring-2 ring-indigo-500 rounded-2xl">

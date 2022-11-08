@@ -5,6 +5,8 @@ import RegisterView from '../views/RegisterView.vue'
 import ProductView from '../views/ProductView.vue'
 import PricingView from '../views/PricingView.vue'
 import SuccessView from '../views/SuccessView.vue'
+import CategoriesView from '../views/CategoriesView.vue'
+import CategoryItems from '../views/CategoryItems.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,6 +30,16 @@ const router = createRouter({
       path: '/product/:id',
       name: 'product',
       component: ProductView
+    },
+    {
+      path: '/categories',
+      name: 'categories',
+      component: CategoriesView
+    },
+    {
+      path: '/categories/:id',
+      name: 'category-items',
+      component: CategoryItems
     },
     {
       path: '/pricing',
