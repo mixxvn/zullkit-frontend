@@ -9,7 +9,7 @@ const item = ref(false);
 
 async function getProduct(){
     try {
-        const response = await axios.get('https://-backend.buildwithangga.id/api/products?id=' + route.params.id );
+        const response = await axios.get('https://zullkit-backend.buildwithangga.id/api/products?id=' + route.params.id );
         item.value = response.data.data
     } catch (error) {
         console.error(error)

@@ -10,7 +10,7 @@ import axios from 'axios'
 
 //     async function fetchUser() {
 //         try {
-//             const { data } = await axios.get('https://-backend.buildwithangga.id/api/user', {
+//             const { data } = await axios.get('https://zullkit-backend.buildwithangga.id/api/user', {
 //                 headers: {
 //                     Authorization: localStorage.getItem('token_type') + ' ' + localStorage.getItem('token_access')
 //                 }
@@ -35,7 +35,7 @@ export const useUserStore = defineStore('user', {
     actions: {
         async fetchUser() {
             try {
-                const { data } = await axios.get('https://-backend.buildwithangga.id/api/user', {
+                const { data } = await axios.get('https://zullkit-backend.buildwithangga.id/api/user', {
                     headers: {
                         Authorization: localStorage.getItem('token_type') + ' ' + localStorage.getItem('token_access')
                     }
