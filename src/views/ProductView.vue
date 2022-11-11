@@ -35,7 +35,7 @@ const features = computed(() => {
                     {{ item.name }}
                 </h1>
                 <p class="text-gray-500">{{ item.subtitle }}</p>
-                <Gallery />
+                <Gallery :defaultImage="item.thumbnails" :galleries="item.galleries" />
                 <section class="" id="orders">
                     <h1 class="mt-8 mb-3 text-lg font-semibold">About</h1>
                     <div class="text-gray-500" v-html="item.description">
