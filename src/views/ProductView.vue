@@ -3,28 +3,31 @@ import { RouterLink, useRoute } from 'vue-router'
 import Gallery from '@/components/product/Gallery.vue'
 import { ref, onMounted, computed } from 'vue';
 import axios from 'axios';
+import { useUserStore } from '@/stores/user.js'
 
-const route = useRoute();
-const item = ref(false);
+const route = useRoute()
+const item = ref(false)
+const userStore = useUserStore()
+const user = computed (() => userStore.getUser)
 
-async function getProduct(){
+async function getProduct() {
     try {
-        const response = await axios.get('https://zullkit-backend.buildwithangga.id/api/products?id=' + route.params.id );
+        const response = await axios.get('https://zullkit-backend.buildwithangga.id/api/products?id=' + route.params.id)
         item.value = response.data.data
     } catch (error) {
         console.error(error)
     }
 }
 
-onMounted (() => {
-    window.scrollTo(0,0);
-    getProduct();
+onMounted(() => {
+    window.scrollTo(0, 0)
+    getProduct()
+    userStore.fetchUser()
 })
 
 const features = computed(() => {
-    return item.value.features.split(',');
+    return item.value.features.split(',')
 })
-
 </script>
 
 <template>
@@ -39,7 +42,7 @@ const features = computed(() => {
                 <section class="" id="orders">
                     <h1 class="mt-8 mb-3 text-lg font-semibold">About</h1>
                     <div class="text-gray-500" v-html="item.description">
-                        
+
                     </div>
                 </section>
             </main>
@@ -77,10 +80,14 @@ const features = computed(() => {
                                 </li>
                             </ul>
                         </div>
-                        <RouterLink to="/pricing"
+                        <a v-if="user.data.subscription.length > 0" :href="item.file"
                             class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-full hover:bg-indigo-700 md:py-2 md:text-md md:px-10 hover:shadow">
                             Download Now
-                    </RouterLink>
+                        </a>
+                        <RouterLink v-else to="/pricing"
+                            class="inline-flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-full hover:bg-indigo-700 md:py-2 md:text-md md:px-10 hover:shadow">
+                            Subscription
+                        </RouterLink>
                     </div>
                 </div>
             </aside>

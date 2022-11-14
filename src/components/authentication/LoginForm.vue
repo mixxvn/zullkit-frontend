@@ -1,5 +1,4 @@
 <script setup>
-
 import { RouterLink, useRouter } from 'vue-router'
 import { ref } from 'vue'
 import axios from 'axios'
@@ -27,7 +26,6 @@ async function login() {
         console.error(error)
     }
 }
-
 </script>
 
 <template>
