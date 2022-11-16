@@ -9,7 +9,7 @@ const props = defineProps({
 let mainImage = ref(props.defaultImage)
 
 function changeMainImage(image) {
-    this.mainImage = image
+    mainImage.value = image
 }
 </script>
 
