@@ -6,7 +6,7 @@ const props = defineProps({
     galleries: Array
 })
 
-const mainImage = ref(props.defaultImage)
+let mainImage = ref(props.defaultImage)
 
 function changeMainImage(image) {
     this.mainImage = image
